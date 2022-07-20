@@ -6,13 +6,13 @@
 /*   By: muganiev <gf.black.tv@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 23:31:37 by muganiev          #+#    #+#             */
-/*   Updated: 2022/07/20 19:19:32 by muganiev         ###   ########.fr       */
+/*   Updated: 2022/07/20 19:38:06 by muganiev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	get_next_line(int fd, char **line)
+char	*get_next_line(int fd);
 {
 	
 }
