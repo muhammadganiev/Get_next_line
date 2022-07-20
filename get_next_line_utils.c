@@ -3,11 +3,11 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: muganiev <mukhammad.ganiev@mail.ru>        +#+  +:+       +#+        */
+/*   By: muganiev <gf.black.tv@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 23:32:09 by muganiev          #+#    #+#             */
-/*   Updated: 2022/06/26 23:32:12 by muganiev         ###   ########.fr       */
+/*   Updated: 2022/07/19 19:05:28 by muganiev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
+#include <>
