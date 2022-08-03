@@ -2,15 +2,16 @@
 #include <stdio.h>
 
 #define NO_OF_FILES 1
-// linux systems limit the num of FD that any one process may open to 1024 per process.
 #define MAX_FD 1024
 
 int	main(void)
 {
-	int		fd, fd2;
+	int		fd;
+	int		fd2;
 	int		i;
 	char	*line[MAX_FD];
-	char	*arr_of_filenames[] = {
+	char	**arr_of_filenames;
+	*arr_of_filenames[]= {
 		// "gnlTester/files/big_line_no_nl",
 		"tests/test2.txt",
 		"tests/sample.txt",
@@ -29,7 +30,7 @@ int	main(void)
 		printf("Filename: %s\n", arr_of_filenames[file_counter]);
 		while (1)
 		{
-			line[fd] = get_next_line(fd);
+			line[fd] = get_next_line (fd);
 			if (!line[fd])
 				break;
 			else
@@ -40,7 +41,7 @@ int	main(void)
 		printf("\n----------------------------\n");
 		close(fd);
 		file_counter++;
-	}
+		}
 	// file_counter = 0;
 	// i = 0;
 	// fd = open(arr_of_filenames[file_counter], O_RDONLY);
