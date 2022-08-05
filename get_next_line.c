@@ -12,138 +12,120 @@
 
 #include "get_next_line.h"
 
-char	*ft_before(char *str)
-{
-	int		i;
-	char	*ptr;
+// Удаляет лишнее
 
-	i = 0;
-	if (!str)
-		return (NULL);
-	while (str[i] != '\n' && str[i])
-		i++;
-	if (str[0] == '\0')
-	{
-		return (NULL);
-	}
-	ptr = malloc(sizeof(char) * i + 2);
-	if (!ptr)
-		return (NULL);
-	i = 0;
-	while (str[i] != '\n' && str[i])
-	{
-		ptr[i] = str[i];
-		i++;
-	}
-	if (str[i] == '\n')
-		ptr[i++] = '\n';
-	ptr[i] = '\0';
-	return (ptr);
-}
-
-char	*ft_after(char *str)
+char	*cutting(char *str)
 {
 	int		i;
 	int		j;
-	char	*ptr;
+	char	*buff;
 
-	j = 0;
-	if (!str)
-		return (NULL);
-	i = ft_strlen(str);
-	while (str[j] != '\n' && str[j])
-		j++;
-	if (str[j] == '\0')
-	{
-		free(str);
-		return (NULL);
-	}
-	ptr = malloc(sizeof(char) * (i - j));
-	if (!ptr)
-		return (NULL);
 	i = 0;
-	j++;
-	while (str[j])
-		ptr[i++] = str[j++];
-	ptr[i] = '\0';
-	free(str);
-	return (ptr);
-}
-
-//checking new line in string
-int	has_newline(char *str)
-{
-	if (!str)
-		return (0);
-	while (*str)
+	while (str[i] && str[i] != '\n')
+		i++;
+	if (!str[i])
 	{
-		if (*str == '\n')
-			return (1);
-		str++;
+		free (str);
+		return (0);
 	}
-	return (0);
+	buff = malloc (sizeof(char) * (ft_strlen(str) - i + 1));
+	if (!buff)
+		return (0);
+	j = 0;
+	i++;
+	while (str[i])
+	{
+		buff[j++] = str[i++];
+	}
+	buff[j] = '\0';
+	free(str);
+	return (buff);
 }
 
-//file descriptor check
-char	*ft_read(int fd, char *buf, char *tmp, char *str)
+// Возвращает строку + \0
+
+char	*new_line(char *str)
 {
 	int		i;
+	char	*buff;
 
-	i = 1;
-	while (i != 0)
+	i = 0;
+	if (str[i] == '\0')
+		return (0);
+	while (str[i] && str[i] != '\n')
+		i++;
+	buff = malloc(sizeof(char) * (i + 2));
+	if (!buff)
+		return (0);
+	i = 0;
+	while (str[i] && str[i] != '\n')
 	{
-		i = read(fd, buf, BUFFER_SIZE);
-		if (i == -1)
-		{
-			free (buf);
-			return (NULL);
-		}
-		buf[i] = '\0';
-		tmp = str;
-		if (!tmp)
-		{
-			tmp = malloc(sizeof(char) * 1);
-			tmp[0] = '\0';
-		}
-		str = ft_strjoin(tmp, buf);
-		free(tmp);
-		if (has_newline(str) == 1)
-			break ;
+		buff[i] = str[i];
+		i++;
 	}
-	free(buf);
+	if (str[i] == '\n')
+	{
+		buff[i] = str[i];
+		i++;
+	}
+	buff[i] = '\0';
+	return (buff);
+}
+
+// Читает весь текст в static
+
+static char	*reader(int fd, char *str)
+{
+	char	*buff;
+	int		readed_bytes;
+
+	readed_bytes = 1;
+	buff = malloc(sizeof(char) * BUFFER_SIZE + 1);
+	if (!buff)
+		return (0);
+	while (!line_num(str) && readed_bytes != 0)
+	{
+		readed_bytes = read(fd, buff, BUFFER_SIZE);
+		if (readed_bytes == -1)
+		{
+			free(buff);
+			return (0);
+		}
+		buff[readed_bytes] = '\0';
+		str = ft_strjoin(str, buff);
+	}
+	free(buff);
 	return (str);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*str;
-	char		*buf;
-	char		*line;
-	char		*tmp;
+	static char		*str;
+	char			*buff;
 
-	tmp = NULL;
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
-	buf = malloc(BUFFER_SIZE + 1);
-	if (!buf)
-		return (NULL);
-	str = ft_read(fd, buf, tmp, str);
+		return (0);
+	str = reader(fd, str);
 	if (!str)
-		return (NULL);
-	line = ft_before(str);
-	str = ft_after(str);
-	return (line);
+		return (0);
+	buff = new_line(str);
+	str = cutting(str);
+	return (buff);
 }
 
-#include <stdio.h>
+ #include <stdio.h>
+ int	main(void)
+ {
+	 int ihab;
+	 ihab = open("test.txt", O_RDONLY);
+	 printf ("%s\n", get_next_line(ihab));
 
-int	main(void)
-{
-	int	fd;
 
-	fd = open("text.txt", O_RDONLY);
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-}
+// 	int		fd;
+
+// 	fd = open("input.txt", O_RDONLY);
+// 	printf("%s", get_next_line(fd));
+// 	printf("%s", get_next_line(fd));
+// 	printf("%s", get_next_line(fd));
+ }
+ 
