@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main2.c                                            :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muganiev <gf.black.tv@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/04 19:55:20 by muganiev          #+#    #+#             */
-/*   Updated: 2022/08/04 20:01:37 by muganiev         ###   ########.fr       */
+/*   Created: 2022/06/26 23:32:26 by muganiev          #+#    #+#             */
+/*   Updated: 2022/08/05 19:00:50 by muganiev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-#include <stdio.h>
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
-int	main(void)
-{
-	int	fd;
+# include <unistd.h>
+# include <stdlib.h>
+# include <fcntl.h>
 
-	fd = open("text.txt", O_RDONLY);
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-}
+char	*get_next_line(int fd);
+char	*ft_read(int fd, char *buf, char *tmp, char *str);
+char	*ft_before(char *str);
+char	*ft_after(char *str);
+int		has_newline(char *str);
+char	*ft_strjoin(char const *s1, char const *s2);
+size_t	ft_strlen(const	char *str);
+
+#endif

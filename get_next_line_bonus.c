@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muganiev <gf.black.tv@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 23:31:37 by muganiev          #+#    #+#             */
-/*   Updated: 2022/08/05 19:03:07 by muganiev         ###   ########.fr       */
+/*   Updated: 2022/08/05 19:09:44 by muganiev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_before(char *str)
 {
@@ -70,7 +70,6 @@ char	*ft_after(char *str)
 	return (ptr);
 }
 
-//checking new line in string
 int	has_newline(char *str)
 {
 	if (!str)
@@ -84,7 +83,6 @@ int	has_newline(char *str)
 	return (0);
 }
 
-//file descriptor check
 char	*ft_read(int fd, char *buf, char *tmp, char *str)
 {
 	int		i;
@@ -116,7 +114,7 @@ char	*ft_read(int fd, char *buf, char *tmp, char *str)
 
 char	*get_next_line(int fd)
 {
-	static char	*str;
+	static char	*str[1024];
 	char		*buf;
 	char		*line;
 	char		*tmp;
@@ -127,23 +125,10 @@ char	*get_next_line(int fd)
 	buf = malloc(BUFFER_SIZE + 1);
 	if (!buf)
 		return (NULL);
-	str = ft_read(fd, buf, tmp, str);
-	if (!str)
+	str[fd] = ft_read(fd, buf, tmp, str[fd]);
+	if (!str[fd])
 		return (NULL);
-	line = ft_before(str);
-	str = ft_after(str);
+	line = ft_before(str[fd]);
+	str[fd] = ft_after(str[fd]);
 	return (line);
 }
-
-/*#include <stdio.h>
-
-int	main(void)
-{
-	int	fd;
-
-	fd = open("text.txt", O_RDONLY);
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-}*/
