@@ -6,7 +6,7 @@
 /*   By: muganiev <gf.black.tv@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 23:31:37 by muganiev          #+#    #+#             */
-/*   Updated: 2022/08/05 20:48:02 by muganiev         ###   ########.fr       */
+/*   Updated: 2022/08/05 21:46:43 by muganiev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,19 +113,15 @@ char	*get_next_line(int fd)
 	return (buff);
 }
 
- #include <stdio.h>
- int	main(void)
- {
-	 int ihab;
-	 ihab = open("test.txt", O_RDONLY);
-	 printf ("%s\n", get_next_line(ihab));
-
-
-// 	int		fd;
-
-// 	fd = open("input.txt", O_RDONLY);
-// 	printf("%s", get_next_line(fd));
-// 	printf("%s", get_next_line(fd));
-// 	printf("%s", get_next_line(fd));
- }
- 
+#include <stdio.h>
+int	main(void)
+{
+	int	fd;
+	
+	fd = open("text.txt", O_RDONLY);
+	
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+}

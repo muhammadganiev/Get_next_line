@@ -6,7 +6,7 @@
 /*   By: muganiev <gf.black.tv@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 23:31:37 by muganiev          #+#    #+#             */
-/*   Updated: 2022/08/05 19:09:44 by muganiev         ###   ########.fr       */
+/*   Updated: 2022/08/05 21:10:56 by muganiev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ char	*get_next_line(int fd)
 	static char		*str[1024];
 	char			*buff;
 
-	if (fd < 0 || fd >= 1024|| BUFFER_SIZE <= 0)
+	if (fd < 0 || fd >= 1024 || BUFFER_SIZE <= 0)
 		return (0);
 	str[fd] = reader(fd, str[fd]);
 	if (!str[fd])

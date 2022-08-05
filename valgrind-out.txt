@@ -1,0 +1,141 @@
+==249== Memcheck, a memory error detector
+==249== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==249== Using Valgrind-3.15.0-608cb11914-20190413 and LibVEX; rerun with -h for copyright info
+==249== Command: ./a.out
+==249== Parent PID: 1
+==249== 
+--249-- 
+--249-- Valgrind options:
+--249--    --leak-check=full
+--249--    --show-leak-kinds=all
+--249--    --track-origins=yes
+--249--    --verbose
+--249--    --log-file=valgrind-out.txt
+--249-- Contents of /proc/version:
+--249--   Linux version 4.9.49-moby (root@11fbdc1f630f) (gcc version 6.2.1 20160822 (Alpine 6.2.1) ) #1 SMP Wed Sep 27 23:17:17 UTC 2017
+--249-- 
+--249-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-sse3-ssse3-avx-avx2-bmi-f16c-rdrand
+--249-- Page sizes: currently 4096, max supported 4096
+--249-- Valgrind library directory: /usr/lib/x86_64-linux-gnu/valgrind
+--249-- Reading syms from /home/vscode/src/a.out
+--249-- Reading syms from /usr/lib/x86_64-linux-gnu/ld-2.31.so
+--249--   Considering /usr/lib/debug/.build-id/45/87364908de169dec62ffa538170118c1c3a078.debug ..
+--249--   .. build-id is valid
+--249-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/memcheck-amd64-linux
+--249--    object doesn't have a symbol table
+--249--    object doesn't have a dynamic symbol table
+--249-- Scheduler: using generic scheduler lock implementation.
+--249-- Reading suppressions file: /usr/lib/x86_64-linux-gnu/valgrind/default.supp
+==249== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-249-by-root-on-f57d108db444
+==249== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-249-by-root-on-f57d108db444
+==249== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-249-by-root-on-f57d108db444
+==249== 
+==249== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==249== don't want to do, unless you know exactly what you're doing,
+==249== or are doing some strange experiment):
+==249==   /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=249 ...command...
+==249== 
+==249== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==249==   /path/to/gdb ./a.out
+==249== and then give GDB the following command
+==249==   target remote | /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=249
+==249== --pid is optional if only one valgrind process is running
+==249== 
+--249-- REDIR: 0x4022e20 (ld-linux-x86-64.so.2:strlen) redirected to 0x580c9ce2 (???)
+--249-- REDIR: 0x4022bf0 (ld-linux-x86-64.so.2:index) redirected to 0x580c9cfc (???)
+--249-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_core-amd64-linux.so
+--249--    object doesn't have a symbol table
+--249-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so
+--249--    object doesn't have a symbol table
+==249== WARNING: new redirection conflicts with existing -- ignoring it
+--249--     old: 0x04022e20 (strlen              ) R-> (0000.0) 0x580c9ce2 ???
+--249--     new: 0x04022e20 (strlen              ) R-> (2007.0) 0x0483f060 strlen
+--249-- REDIR: 0x401f600 (ld-linux-x86-64.so.2:strcmp) redirected to 0x483ffd0 (strcmp)
+--249-- REDIR: 0x4023380 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4843a20 (mempcpy)
+--249-- Reading syms from /usr/lib/x86_64-linux-gnu/libc-2.31.so
+--249--   Considering /usr/lib/debug/.build-id/18/78e6b475720c7c51969e69ab2d276fae6d1dee.debug ..
+--249--   .. build-id is valid
+--249-- REDIR: 0x48ef480 (libc.so.6:memmove) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--249-- REDIR: 0x48ee780 (libc.so.6:strncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--249-- REDIR: 0x48ef7b0 (libc.so.6:strcasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--249-- REDIR: 0x48ee0a0 (libc.so.6:strcat) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--249-- REDIR: 0x48ee7e0 (libc.so.6:rindex) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--249-- REDIR: 0x48f0c50 (libc.so.6:rawmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--249-- REDIR: 0x490bce0 (libc.so.6:wmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--249-- REDIR: 0x490b820 (libc.so.6:wcscmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--249-- REDIR: 0x48ef5e0 (libc.so.6:mempcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--249-- REDIR: 0x48ef410 (libc.so.6:bcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--249-- REDIR: 0x48ee710 (libc.so.6:strncmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--249-- REDIR: 0x48ee150 (libc.so.6:strcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--249-- REDIR: 0x48ef540 (libc.so.6:memset) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--249-- REDIR: 0x490b7e0 (libc.so.6:wcschr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--249-- REDIR: 0x48ee670 (libc.so.6:strnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--249-- REDIR: 0x48ee230 (libc.so.6:strcspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--249-- REDIR: 0x48ef800 (libc.so.6:strncasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--249-- REDIR: 0x48ee1d0 (libc.so.6:strcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--249-- REDIR: 0x48ef950 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--249-- REDIR: 0x490cf50 (libc.so.6:wcsnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--249-- REDIR: 0x490b860 (libc.so.6:wcscpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--249-- REDIR: 0x48ee820 (libc.so.6:strpbrk) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--249-- REDIR: 0x48ee100 (libc.so.6:index) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--249-- REDIR: 0x48ee630 (libc.so.6:strlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--249-- REDIR: 0x48f7bb0 (libc.so.6:memrchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--249-- REDIR: 0x48ef850 (libc.so.6:strcasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--249-- REDIR: 0x48ef3d0 (libc.so.6:memchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--249-- REDIR: 0x490b930 (libc.so.6:wcslen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--249-- REDIR: 0x48eeae0 (libc.so.6:strspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--249-- REDIR: 0x48ef750 (libc.so.6:stpncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--249-- REDIR: 0x48ef6f0 (libc.so.6:stpcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--249-- REDIR: 0x48f0c90 (libc.so.6:strchrnul) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--249-- REDIR: 0x48ef8a0 (libc.so.6:strncasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--249-- REDIR: 0x49d7500 (libc.so.6:__strrchr_avx2) redirected to 0x483ea10 (rindex)
+--249-- REDIR: 0x48e90e0 (libc.so.6:malloc) redirected to 0x483b780 (malloc)
+--249-- REDIR: 0x48e96d0 (libc.so.6:free) redirected to 0x483c9d0 (free)
+--249-- REDIR: 0x49d76d0 (libc.so.6:__strlen_avx2) redirected to 0x483ef40 (strlen)
+--249-- REDIR: 0x49da6c0 (libc.so.6:__mempcpy_avx_unaligned_erms) redirected to 0x4843660 (mempcpy)
+==249== 
+==249== HEAP SUMMARY:
+==249==     in use at exit: 30 bytes in 5 blocks
+==249==   total heap usage: 17 allocs, 12 frees, 1,136 bytes allocated
+==249== 
+==249== Searching for pointers to 5 not-freed blocks
+==249== Checked 68,536 bytes
+==249== 
+==249== 4 bytes in 1 blocks are still reachable in loss record 1 of 5
+==249==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==249==    by 0x109253: cutting (in /home/vscode/src/a.out)
+==249==    by 0x109522: get_next_line (in /home/vscode/src/a.out)
+==249==    by 0x109594: main (in /home/vscode/src/a.out)
+==249== 
+==249== 6 bytes in 1 blocks are definitely lost in loss record 2 of 5
+==249==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==249==    by 0x109345: new_line (in /home/vscode/src/a.out)
+==249==    by 0x10950F: get_next_line (in /home/vscode/src/a.out)
+==249==    by 0x109570: main (in /home/vscode/src/a.out)
+==249== 
+==249== 6 bytes in 1 blocks are definitely lost in loss record 3 of 5
+==249==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==249==    by 0x109345: new_line (in /home/vscode/src/a.out)
+==249==    by 0x10950F: get_next_line (in /home/vscode/src/a.out)
+==249==    by 0x109582: main (in /home/vscode/src/a.out)
+==249== 
+==249== 7 bytes in 1 blocks are definitely lost in loss record 4 of 5
+==249==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==249==    by 0x109345: new_line (in /home/vscode/src/a.out)
+==249==    by 0x10950F: get_next_line (in /home/vscode/src/a.out)
+==249==    by 0x10955E: main (in /home/vscode/src/a.out)
+==249== 
+==249== 7 bytes in 1 blocks are definitely lost in loss record 5 of 5
+==249==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==249==    by 0x109345: new_line (in /home/vscode/src/a.out)
+==249==    by 0x10950F: get_next_line (in /home/vscode/src/a.out)
+==249==    by 0x109594: main (in /home/vscode/src/a.out)
+==249== 
+==249== LEAK SUMMARY:
+==249==    definitely lost: 26 bytes in 4 blocks
+==249==    indirectly lost: 0 bytes in 0 blocks
+==249==      possibly lost: 0 bytes in 0 blocks
+==249==    still reachable: 4 bytes in 1 blocks
+==249==         suppressed: 0 bytes in 0 blocks
+==249== 
+==249== ERROR SUMMARY: 4 errors from 4 contexts (suppressed: 0 from 0)
