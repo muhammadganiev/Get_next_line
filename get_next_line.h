@@ -6,12 +6,16 @@
 /*   By: muganiev <gf.black.tv@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 23:32:26 by muganiev          #+#    #+#             */
-/*   Updated: 2022/08/05 19:00:45 by muganiev         ###   ########.fr       */
+/*   Updated: 2022/08/05 20:51:01 by muganiev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
+
+#ifndef BUFFER_SIZE
+# define BUFFER_SIZE 42
+#endif
 
 # include <unistd.h>
 # include <stdlib.h>

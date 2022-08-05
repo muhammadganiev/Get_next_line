@@ -6,7 +6,7 @@
 /*   By: muganiev <gf.black.tv@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 23:31:37 by muganiev          #+#    #+#             */
-/*   Updated: 2022/08/05 19:03:07 by muganiev         ###   ########.fr       */
+/*   Updated: 2022/08/05 20:48:02 by muganiev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-/*#include <stdio.h>
+#include <stdio.h>
 
 int	main(void)
 {
@@ -146,4 +146,4 @@ int	main(void)
 	printf("%s", get_next_line(fd));
 	printf("%s", get_next_line(fd));
 	printf("%s", get_next_line(fd));
-}*/
+}
