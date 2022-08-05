@@ -1,48 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muganiev <gf.black.tv@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/03 18:51:05 by muganiev          #+#    #+#             */
-/*   Updated: 2022/08/05 00:00:33 by muganiev         ###   ########.fr       */
+/*   Created: 2022/08/04 19:55:20 by muganiev          #+#    #+#             */
+/*   Updated: 2022/08/04 20:01:37 by muganiev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "get_next_line.h"
 #include <stdio.h>
-#include <fcntl.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include "../libft/libft.h"
-
-char	*get_next_line(int fd)
-{
-	static char	buf[15];
-	char		*line;
-	int			i;
-
-	i = 0;
-	if (buf[i] == '\0')
-	{
-		read (fd, buf, 14);
-	}
-	buf[14] = '\0';
-	while (buf[i] && buf[i] != ' ')
-	{
-		printf("%c", buf[i]);
-		i++;
-	}
-	printf("\n");
-	return (buf);
-}
 
 int	main(void)
 {
-	int		fd;
+	int	fd;
 
 	fd = open("text.txt", O_RDONLY);
-	get_next_line(fd);
-	get_next_line(fd);
-	get_next_line(fd);
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
 }

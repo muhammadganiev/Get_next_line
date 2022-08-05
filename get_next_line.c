@@ -6,7 +6,7 @@
 /*   By: muganiev <gf.black.tv@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 23:31:37 by muganiev          #+#    #+#             */
-/*   Updated: 2022/08/03 18:53:31 by muganiev         ###   ########.fr       */
+/*   Updated: 2022/08/04 20:23:49 by muganiev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ char	*ft_after(char *str)
 	return (ptr);
 }
 
+//checking new line in string
 int	has_newline(char *str)
 {
 	if (!str)
@@ -83,6 +84,7 @@ int	has_newline(char *str)
 	return (0);
 }
 
+//file descriptor check
 char	*ft_read(int fd, char *buf, char *tmp, char *str)
 {
 	int		i;
